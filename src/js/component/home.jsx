@@ -5,10 +5,6 @@ import Card from "../Card";
 import Footer from "../Footer";
 
 
-//include images into your bundle
-
-
-//create your first component
 const Home = () => {
 	let data = [
 		{
@@ -42,17 +38,27 @@ const Home = () => {
 		},
 	]
 	return (
-		<div className="text-center">
+		<div className="d-flex flex-column min-vh-100">
 			<Navbar />
 			<Jumbotron />
-			<div className="container d-flex justify-content-between ">
-
-				{data.map((value, index, array) => {
-					return <Card key={index} photo={value.photo} title={value.title} description={value.description} buttonLabel={value.buttonLabel} buttonURL={value.buttonURL} />
-				})}
-
-			</div>
-			<Footer />
+			<div className="container">
+  <div className="row">
+    {data.map((value, index) => {
+      return (
+        <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" key={index}>
+          <Card
+            photo={value.photo}
+            title={value.title}
+            description={value.description}
+            buttonLabel={value.buttonLabel}
+            buttonURL={value.buttonURL}
+          />
+        </div>
+      );
+    })}
+  </div>
+</div>
+			<Footer className=""  />
 		</div>
 	);
 };
